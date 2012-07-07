@@ -34,5 +34,7 @@ mongo.Db.connect(process.env.MONGOHQ_URL, function(error, client) {
 		};
 	});
 	// console.log(util.inspect(app))
-	app.listen(1337, '127.0.0.1');
+	var port = process.env.PORT || 5000;
+	app.listen(port);
+	// app.listen(1337, '127.0.0.1');
 })
