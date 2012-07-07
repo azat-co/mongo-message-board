@@ -8,10 +8,10 @@ var mongo = require('mongodb');
 
 // var db= new mongo.Db('test', new mongo.Server(host,port,{}));
 var url = require('url');
-
+console.log(process.env.MONGOHQ_URL);
 var connectionUri = url.parse(process.env.MONGOHQ_URL);
 var dbName = connectionUri.pathname.replace(/^\//, '');
-
+console.log(connectionUri);
 mongo.Db.connect(process.env.MONGOHQ_URL, function(error, client) {
 // db.open( function(error, client) {
 	if (error) throw error;
