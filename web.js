@@ -13,6 +13,8 @@ var url = require('url');
 // var connectionUri = url.parse(process.env.MONGOHQ_URL);
 // var dbName = connectionUri.pathname.replace(/^\//, '');
 // console.log(connectionUri);
+var host = process.env.MONGOHQ_URL || "mongodb://@127.0.0.1:27017";
+//export MONGOHQ_URL=mongodb://user:pass@server.mongohq.com/db_name
 mongo.Db.connect(process.env.MONGOHQ_URL, function(error, client) {
 // db.open( function(error, client) {
 	if (error) throw error;
