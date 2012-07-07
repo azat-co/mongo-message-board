@@ -8,6 +8,7 @@ var mongo = require('mongodb');
 
 // var db= new mongo.Db('test', new mongo.Server(host,port,{}));
 var url = require('url');
+
 var connectionUri = url.parse(process.env.MONGOHQ_URL);
 var dbName = connectionUri.pathname.replace(/^\//, '');
 
