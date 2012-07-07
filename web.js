@@ -2,21 +2,11 @@ var http = require('http');
 var util = require('util');
 var querystring = require('querystring');
 var mongo = require('mongodb');
-var url = require('url');
 
-// var host = "127.0.0.1";
-// var port = 27017;
 
-// var db= new mongo.Db('test', new mongo.Server(host,port,{}));
-
-// console.log(process.env.MONGOHQ_URL);
-// var connectionUri = url.parse(process.env.MONGOHQ_URL);
-// var dbName = connectionUri.pathname.replace(/^\//, '');
-// console.log(connectionUri);
 var host = process.env.MONGOHQ_URL || "mongodb://@127.0.0.1:27017";
-//export MONGOHQ_URL=mongodb://user:pass@server.mongohq.com/db_name
+//MONGOHQ_URL=mongodb://user:pass@server.mongohq.com/db_name
 mongo.Db.connect(process.env.MONGOHQ_URL, function(error, client) {
-// db.open( function(error, client) {
 	if (error) throw error;
 	var collection = new mongo.Collection(client, 'test_collection');
 	var app = http.createServer( function (request, response) {
@@ -36,9 +26,8 @@ mongo.Db.connect(process.env.MONGOHQ_URL, function(error, client) {
 			})
 
 		};
+
 	});
-	// console.log(util.inspect(app))
 	var port = process.env.PORT || 5000;
 	app.listen(port);
-	// app.listen(1337, '127.0.0.1');
 })
